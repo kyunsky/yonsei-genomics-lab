@@ -10,7 +10,7 @@
 baseURL = "https://kyunsky.github.io/yonsei-genomics-lab/"
 
 languageCode = "ko-kr"
-title = "Genomics Laboratory · 연세대학교 의과대학 진단검사의학과"
+title = "Microbial Genomics Laboratory · 연세대학교 의과대학 진단검사의학과"
 defaultContentLanguage = "ko"
 
 # 깔끔한 URL (about/ → about/index.html)
