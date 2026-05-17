@@ -6,8 +6,8 @@
     <h1>{{ .Site.Params.labNameKo }}</h1>
     <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
     <div class="hero-actions">
-      <a class="btn" href="{{ "/about" | relURL }}">연구소 소개</a>
-      <a class="btn btn-ghost" href="{{ "/publications" | relURL }}">출판 논문 보기</a>
+      <a class="btn" href="{{ (site.GetPage "/about").RelPermalink }}">연구소 소개</a>
+      <a class="btn btn-ghost" href="{{ (site.GetPage "/publications").RelPermalink }}">출판 논문 보기</a>
     </div>
   </div>
 </section>
@@ -37,7 +37,7 @@
   <div class="container">
     <div class="block-head reveal">
       <h2>진행 중인 프로젝트</h2>
-      <a class="more" href="{{ "/projects" | relURL }}">전체 보기 →</a>
+      <a class="more" href="{{ (site.GetPage "/projects").RelPermalink }}">전체 보기 →</a>
     </div>
     <div class="card-grid">
       {{ range $i, $p := first 3 (where .Site.RegularPages "Section" "projects") }}
@@ -55,7 +55,7 @@
   <div class="container">
     <div class="block-head reveal">
       <h2>최근 출판 논문</h2>
-      <a class="more" href="{{ "/publications" | relURL }}">전체 보기 →</a>
+      <a class="more" href="{{ (site.GetPage "/publications").RelPermalink }}">전체 보기 →</a>
     </div>
     <ul class="pub-list reveal d1">
       {{ range first 4 (sort (where .Site.RegularPages "Section" "publications") "Params.year" "desc") }}
