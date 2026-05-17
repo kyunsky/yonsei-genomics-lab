@@ -1,13 +1,17 @@
 {{ define "main" }}
+<div class="container">
 <article class="page">
-  <a class="back" href="{{ "/projects" | relURL }}">← 프로젝트 목록</a>
-  <span class="tag tag-{{ .Params.status | urlize }}">{{ .Params.status }}</span>
-  <h1>{{ .Title }}</h1>
-  <table class="meta-table">
-    <tr><th>연구비 지원</th><td>{{ .Params.funder }}</td></tr>
-    <tr><th>연구 기간</th><td>{{ .Params.start }} – {{ .Params.end }}</td></tr>
-    {{ with .Params.pi }}<tr><th>책임연구자</th><td>{{ . }}</td></tr>{{ end }}
-  </table>
-  <div class="prose">{{ .Content }}</div>
+  <a class="back reveal in" href="{{ "/projects" | relURL }}">← 프로젝트 목록</a>
+  <div class="reveal in d1">
+    <span class="tag tag-{{ .Params.status | urlize }}">{{ .Params.status }}</span>
+    <h1>{{ .Title }}</h1>
+    <table class="meta-table">
+      <tr><th>연구비 지원</th><td>{{ .Params.funder }}</td></tr>
+      <tr><th>연구 기간</th><td>{{ .Params.start }} – {{ .Params.end }}</td></tr>
+      {{ with .Params.pi }}<tr><th>책임연구자</th><td>{{ . }}</td></tr>{{ end }}
+    </table>
+  </div>
+  <div class="prose reveal in d2">{{ .Content }}</div>
 </article>
+</div>
 {{ end }}

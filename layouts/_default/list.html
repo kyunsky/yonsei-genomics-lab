@@ -1,7 +1,8 @@
 {{ define "main" }}
+<div class="container">
 <article class="page">
-  <h1>{{ .Title }}</h1>
-  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  <h1 class="reveal in">{{ .Title }}</h1>
+  {{ with .Content }}<div class="prose reveal in d1">{{ . }}</div>{{ end }}
 
   {{/* ─── 구성원 ─────────────────────────────── */}}
   {{ if eq .Section "people" }}
@@ -10,16 +11,16 @@
       {{ $role := . }}
       {{ $members := where (where $.Site.RegularPages "Section" "people") "Params.role" $role }}
       {{ with $members }}
-        <h2 class="role-head">{{ $role }}</h2>
+        <h2 class="role-head reveal">{{ $role }}</h2>
         <div class="people-grid">
-          {{ range . }}
-          <div class="person">
-            <div class="avatar">{{ substr .Params.initials 0 2 }}</div>
+          {{ range $i, $m := . }}
+          <div class="person reveal d{{ add (mod $i 4) 1 }}">
+            <div class="avatar">{{ substr $m.Params.initials 0 2 }}</div>
             <div>
-              <p class="person-name">{{ .Title }}</p>
-              <p class="muted">{{ .Params.position }}</p>
-              {{ with .Params.research }}<p class="person-research">{{ . }}</p>{{ end }}
-              {{ with .Params.email }}<a class="muted" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+              <p class="person-name">{{ $m.Title }}</p>
+              <p class="muted">{{ $m.Params.position }}</p>
+              {{ with $m.Params.research }}<p class="person-research">{{ . }}</p>{{ end }}
+              {{ with $m.Params.email }}<a class="muted" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
             </div>
           </div>
           {{ end }}
@@ -30,12 +31,12 @@
   {{/* ─── 프로젝트 ───────────────────────────── */}}
   {{ else if eq .Section "projects" }}
     <div class="card-grid">
-      {{ range sort (where .Site.RegularPages "Section" "projects") "Params.start" "desc" }}
-      <a class="card card-link" href="{{ .RelPermalink }}">
-        <span class="tag tag-{{ .Params.status | urlize }}">{{ .Params.status }}</span>
-        <h3>{{ .Title }}</h3>
-        <p class="muted">{{ .Params.funder }}</p>
-        <p class="muted period">{{ .Params.start }} – {{ .Params.end }}</p>
+      {{ range $i, $p := sort (where .Site.RegularPages "Section" "projects") "Params.start" "desc" }}
+      <a class="card card-link reveal d{{ add (mod $i 4) 1 }}" href="{{ $p.RelPermalink }}">
+        <span class="tag tag-{{ $p.Params.status | urlize }}">{{ $p.Params.status }}</span>
+        <h3>{{ $p.Title }}</h3>
+        <p class="muted">{{ $p.Params.funder }}</p>
+        <p class="muted period">{{ $p.Params.start }} – {{ $p.Params.end }}</p>
       </a>
       {{ end }}
     </div>
@@ -44,8 +45,8 @@
   {{ else if eq .Section "publications" }}
     {{ $pubs := where .Site.RegularPages "Section" "publications" }}
     {{ range $pubs.GroupByParam "year" "desc" }}
-      <h2 class="role-head">{{ .Key }}</h2>
-      <ul class="pub-list">
+      <h2 class="role-head reveal">{{ .Key }}</h2>
+      <ul class="pub-list reveal d1">
         {{ range sort .Pages "Title" }}
         <li>
           <div>
@@ -59,4 +60,5 @@
     {{ end }}
   {{ end }}
 </article>
+</div>
 {{ end }}
