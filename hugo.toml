@@ -49,25 +49,25 @@ disableKinds = ["taxonomy", "term", "RSS"]
 [menu]
   [[menu.main]]
     name = "소개"
-    pageRef = "/yonsei-genomics-lab/about"
+    pageRef = "/yonsei-genomics-lab/about/"
     weight = 10
   [[menu.main]]
     name = "구성원"
-    pageRef = "/yonsei-genomics-lab/people"
+    pageRef = "/people"
     weight = 20
   [[menu.main]]
     name = "연구 프로젝트"
-    pageRef = "/yonsei-genomics-lab/projects"
+    pageRef = "/projects"
     weight = 30
   [[menu.main]]
     name = "출판 논문"
-    pageRef = "/yonsei-genomics-lab/publications"
+    pageRef = "/publications"
     weight = 40
   [[menu.main]]
     name = "협력 기관"
-    pageRef = "/yonsei-genomics-lab/partners"
+    pageRef = "/partners"
     weight = 50
   [[menu.main]]
     name = "Contact"
-    pageRef = "/yonsei-genomics-lab/contact"
+    pageRef = "/contact"
     weight = 60
