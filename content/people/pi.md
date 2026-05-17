@@ -1,7 +1,7 @@
 ---
 title: "Seok Hoon Jeong"
-role: "Director"
-position: "Professor"
+role: "PI"
+position: "Professor and director"
 initials: "PI"
 email: "kscpjsh@yuhs.ac"
 research: "Bacterial AMR"
