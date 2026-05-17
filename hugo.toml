@@ -48,7 +48,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
 # ─── 상단 메뉴 ────────────────────────────────────────────────
 [menu]
   [[menu.main]]
-    name = "소개"
+    name = "ABOUT"
     pageRef = "/yonsei-genomics-lab/about/"
     weight = 10
   [[menu.main]]
