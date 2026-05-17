@@ -1,0 +1,66 @@
+{{ define "main" }}
+
+<section class="hero">
+  <p class="eyebrow">YONSEI UNIVERSITY COLLEGE OF MEDICINE</p>
+  <h1>{{ .Site.Params.labNameKo }}</h1>
+  <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+  <div class="hero-actions">
+    <a class="btn" href="{{ "/about" | relURL }}">연구소 소개</a>
+    <a class="btn btn-ghost" href="{{ "/publications" | relURL }}">출판 논문 보기</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><span class="stat-num">{{ .Site.Params.statPublications }}</span><span class="stat-label">SCI 논문</span></div>
+  <div class="stat"><span class="stat-num">{{ .Site.Params.statProjects }}</span><span class="stat-label">진행 과제</span></div>
+  <div class="stat"><span class="stat-num">{{ .Site.Params.statMembers }}</span><span class="stat-label">연구 인력</span></div>
+  <div class="stat"><span class="stat-num">{{ .Site.Params.statStrains }}</span><span class="stat-label">분석 균주</span></div>
+</section>
+
+<section class="block">
+  <h2>연구 분야</h2>
+  <div class="card-grid">
+    {{ range .Site.Data.research_areas }}
+    <div class="card">
+      <h3>{{ .title }}</h3>
+      <p class="muted">{{ .desc }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<section class="block">
+  <div class="block-head">
+    <h2>진행 중인 프로젝트</h2>
+    <a class="more" href="{{ "/projects" | relURL }}">전체 보기 →</a>
+  </div>
+  <div class="card-grid">
+    {{ range first 3 (where .Site.RegularPages "Section" "projects") }}
+    <a class="card card-link" href="{{ .RelPermalink }}">
+      <span class="tag">{{ .Params.status }}</span>
+      <h3>{{ .Title }}</h3>
+      <p class="muted">{{ .Params.funder }}</p>
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<section class="block">
+  <div class="block-head">
+    <h2>최근 출판 논문</h2>
+    <a class="more" href="{{ "/publications" | relURL }}">전체 보기 →</a>
+  </div>
+  <ul class="pub-list">
+    {{ range first 4 (sort (where .Site.RegularPages "Section" "publications") "Params.year" "desc") }}
+    <li>
+      <span class="pub-year">{{ .Params.year }}</span>
+      <div>
+        <span class="pub-title">{{ .Title }}</span>
+        <span class="muted">{{ .Params.authors }} — <em>{{ .Params.journal }}</em></span>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+{{ end }}

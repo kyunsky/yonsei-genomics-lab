@@ -1,0 +1,73 @@
+# ─────────────────────────────────────────────────────────────
+#  연세대학교 의과대학 진단검사의학과 유전체 연구소
+#  Hugo site configuration
+# ─────────────────────────────────────────────────────────────
+
+# GitHub Pages 프로젝트 사이트 주소.
+#   - 사용자/조직 사이트(<id>.github.io)면  "https://<id>.github.io/"
+#   - 프로젝트 사이트면               "https://<id>.github.io/<repo>/"
+#   - 커스텀 도메인이면               "https://lab.yonsei.ac.kr/"
+baseURL = "https://kyunsky.github.io/yonsei-genomics-lab/"
+
+languageCode = "ko-kr"
+title = "Genomics Laboratory · 연세대학교 의과대학 진단검사의학과"
+defaultContentLanguage = "ko"
+
+# 깔끔한 URL (about/ → about/index.html)
+canonifyURLs = false
+enableRobotsTXT = true
+enableGitInfo = true          # 페이지별 최종 수정일 표시 (Git 기반)
+
+# 빌드 결과물에서 제외
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true             # 콘텐츠에서 HTML 직접 사용 허용
+  [markup.highlight]
+    style = "github"
+    noClasses = false
+
+# ─── 사이트 전역 파라미터 ──────────────────────────────────────
+[params]
+  labNameKo  = "유전체 연구소"
+  labNameEn  = "Genomics Laboratory"
+  department = "연세대학교 의과대학 진단검사의학과"
+  tagline    = "차세대 시퀀싱 기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
+  email      = "lab@yuhs.ac"
+  address    = "서울특별시 서대문구 연세로 50-1 연세대학교 의과대학"
+  # 통계 카드 (홈 화면)
+  statPublications = "128"
+  statProjects     = "9"
+  statMembers      = "17"
+  statStrains      = "351"
+
+# ─── 상단 메뉴 ────────────────────────────────────────────────
+[menu]
+  [[menu.main]]
+    name = "소개"
+    pageRef = "/about"
+    weight = 10
+  [[menu.main]]
+    name = "구성원"
+    pageRef = "/people"
+    weight = 20
+  [[menu.main]]
+    name = "연구 프로젝트"
+    pageRef = "/projects"
+    weight = 30
+  [[menu.main]]
+    name = "출판 논문"
+    pageRef = "/publications"
+    weight = 40
+  [[menu.main]]
+    name = "협력 기관"
+    pageRef = "/partners"
+    weight = 50
+  [[menu.main]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 60

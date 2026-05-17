@@ -1,0 +1,104 @@
+/* ───────── 디자인 토큰 ───────── */
+:root{
+  --navy:#0b3d6b; --navy-dark:#072744; --accent:#1d6fa5;
+  --ink:#1a1a1a; --muted:#6b7280; --line:#e5e7eb;
+  --bg:#ffffff; --bg-soft:#f7f8fa;
+  --radius:10px; --maxw:1080px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.muted{color:var(--muted);font-size:.92rem}
+h1{font-size:2rem;font-weight:700;margin-bottom:1rem;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:700;margin-bottom:1rem;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+
+/* ───────── 헤더 ───────── */
+.site-header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:50}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand-mark{width:34px;height:34px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+.brand-text strong{display:block;font-size:.95rem}
+.brand-text small{display:block;font-size:.72rem;color:var(--muted)}
+.site-nav{display:flex;gap:22px}
+.site-nav a{color:var(--ink);font-size:.92rem}
+.site-nav a.active{color:var(--accent);font-weight:600}
+
+/* ───────── 히어로 ───────── */
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.06em;margin-bottom:10px}
+.hero h1{font-size:2.6rem}
+.hero-tagline{max-width:560px;color:var(--muted);font-size:1.05rem;margin:.6rem 0 1.6rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#fff;padding:11px 22px;border-radius:8px;font-size:.92rem}
+.btn:hover{background:var(--navy-dark);text-decoration:none}
+.btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--bg-soft)}
+
+/* ───────── 통계 ───────── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:36px 0;border-bottom:1px solid var(--line)}
+.stat{background:var(--bg-soft);border-radius:var(--radius);padding:20px}
+.stat-num{display:block;font-size:1.9rem;font-weight:700;color:var(--navy)}
+.stat-label{color:var(--muted);font-size:.88rem}
+
+/* ───────── 블록/카드 ───────── */
+.block{padding:48px 0;border-bottom:1px solid var(--line)}
+.block-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.2rem}
+.more{font-size:.88rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:var(--bg)}
+.card-link{display:block;color:var(--ink);transition:border-color .15s}
+.card-link:hover{border-color:var(--accent);text-decoration:none}
+.tag{display:inline-block;font-size:.72rem;background:#eaf2fa;color:var(--navy);padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.tag-진행중{background:#e7f6ee;color:#16794c}
+.tag-완료{background:#f0f0f0;color:#555}
+.period{margin-top:6px;font-size:.82rem}
+
+/* ───────── 논문 목록 ───────── */
+.pub-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.pub-list li{display:flex;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.pub-list li:last-child{border-bottom:none}
+.pub-year{flex:0 0 48px;font-weight:700;color:var(--navy)}
+.pub-title{display:block;font-weight:600;margin-bottom:2px}
+.pub-list .muted{display:block}
+
+/* ───────── 페이지 본문 ───────── */
+.page{padding:56px 0}
+.prose p{margin-bottom:1rem}
+.prose h2{margin-top:2rem}
+.prose ul{margin:0 0 1rem 1.2rem}
+.role-head{margin:2.4rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--navy);font-size:1.15rem}
+.back{display:inline-block;margin-bottom:1rem;font-size:.88rem}
+.meta-table{margin:1rem 0 2rem;border-collapse:collapse}
+.meta-table th{text-align:left;color:var(--muted);font-weight:500;padding:6px 24px 6px 0;vertical-align:top}
+.meta-table td{padding:6px 0}
+
+/* ───────── 구성원 ───────── */
+.people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.person{display:flex;gap:14px;align-items:flex-start}
+.avatar{flex:0 0 46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.9rem}
+.person-name{font-weight:600}
+.person-research{font-size:.85rem;color:var(--muted);margin:2px 0}
+
+/* ───────── 협력 기관 ───────── */
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:1.5rem}
+.partner{border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.partner-name{font-weight:600;margin-bottom:2px}
+.partner-scope{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+/* ───────── 푸터 ───────── */
+.site-footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
+.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:.88rem}
+
+/* ───────── 반응형 ───────── */
+@media(max-width:768px){
+  .header-inner{flex-direction:column;height:auto;padding:12px 0;gap:8px}
+  .site-nav{flex-wrap:wrap;gap:14px;justify-content:center}
+  .hero h1{font-size:1.9rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}

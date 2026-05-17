@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  <div class="partner-grid">
+    {{ range .Site.Data.partners }}
+    <div class="partner">
+      <p class="partner-name">{{ .name }}</p>
+      <p class="muted">{{ .type }}</p>
+      <p class="partner-scope">{{ .scope }}</p>
+    </div>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ "/" | relURL }}" class="brand">
+      <span class="brand-mark">◧</span>
+      <span class="brand-text">
+        <strong>{{ .Site.Params.labNameEn }}</strong>
+        <small>{{ .Site.Params.department }}</small>
+      </span>
+    </a>
+    <nav class="site-nav">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .PageRef | relURL }}"
+           class="{{ if $.IsMenuCurrent "main" . }}active{{ end }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

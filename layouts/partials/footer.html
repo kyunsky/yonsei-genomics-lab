@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>{{ .Site.Params.labNameKo }}</strong> · {{ .Site.Params.department }}<br>
+      <span class="muted">{{ .Site.Params.address }}</span>
+    </div>
+    <div class="muted">
+      <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a><br>
+      © {{ now.Year }} Genomics Laboratory. Built with Hugo.
+    </div>
+  </div>
+</footer>
