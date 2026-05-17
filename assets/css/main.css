@@ -101,7 +101,7 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 }
 .hero h1{font-size:3.2rem;color:#fff;margin-bottom:1.2rem}
 .hero-tagline{
-  max-width:600px;color:#b9ccdf;font-size:1.12rem;line-height:1.8;
+  max-width:min(900px,100%);color:#b9ccdf;font-size:1.12rem;line-height:1.8;
   margin-bottom:2.4rem;font-weight:400;
 }
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
