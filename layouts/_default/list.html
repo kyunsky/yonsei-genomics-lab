@@ -4,21 +4,51 @@
   <h1 class="reveal in">{{ .Title }}</h1>
   {{ with .Content }}<div class="prose reveal in d1">{{ . }}</div>{{ end }}
 
-  {{/* ─── 구성원 ─────────────────────────────── */}}
+  {{/* ─── 구성원 (연구 분야별 기획) ─────────────────────────────── */}}
   {{ if eq .Section "people" }}
-    {{ $roles := slice "PI" "교수" "연구교수" "박사후연구원" "대학원생" "연구원" }}
-    {{ range $roles }}
-      {{ $role := . }}
-      {{ $members := where (where $.Site.RegularPages "Section" "people") "Params.role" $role }}
+    
+    {{/* [1] 전체 Director 섹션 (pi1) */}}
+    {{ $director := where (where $.Site.RegularPages "Section" "people") "Params.research_theme" "director" }}
+    {{ if not $director }}
+      {{ $director = where (where $.Site.RegularPages "Section" "people") "Params.role" "Director" }}
+    {{ end }}
+    
+    {{ with $director }}
+      <h2 class="role-head reveal">Director</h2>
+      <div class="people-grid" style="margin-bottom: 4rem;">
+        {{ range $i, $m := .ByWeight }}
+        <div class="person reveal d{{ add (mod $i 4) 1 }}">
+          <div class="avatar">{{ substr $m.Params.initials 0 2 | default "PI" }}</div>
+          <div>
+            <p class="person-name">{{ $m.Title }}</p>
+            <p class="muted" style="font-weight: 600; color: var(--navy);">{{ $m.Params.position }}</p>
+            {{ with $m.Params.role }}<p class="person-research">{{ . }}</p>{{ end }}
+            {{ with $m.Params.research }}<p class="person-research">{{ . }}</p>{{ end }}
+            {{ with $m.Params.email }}<a class="muted" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{/* [2] 4대 연구 분야별 섹션 운영 */}}
+    {{ $themes := slice "AMR surveillance" "Microbiome" "연구기획" "Human Genetics" }}
+    {{ range $themes }}
+      {{ $theme := . }}
+      {{/* 해당 연구 분야에 속하는 멤버들을 긁어옵니다 */}}
+      {{ $members := where (where $.Site.RegularPages "Section" "people") "Params.research_theme" $theme }}
+      
       {{ with $members }}
-        <h2 class="role-head reveal">{{ $role }}</h2>
-        <div class="people-grid">
-          {{ range $i, $m := . }}
+        <h2 class="role-head reveal">{{ $theme }}</h2>
+        <div class="people-grid" style="margin-bottom: 4rem;">
+          {{/* .ByWeight를 사용해 가중치가 낮은 pi2가 가장 먼저 배치됩니다 */}}
+          {{ range $i, $m := .ByWeight }}
           <div class="person reveal d{{ add (mod $i 4) 1 }}">
-            <div class="avatar">{{ substr $m.Params.initials 0 2 }}</div>
+            <div class="avatar">{{ substr $m.Params.initials 0 2 | default "LAB" }}</div>
             <div>
               <p class="person-name">{{ $m.Title }}</p>
-              <p class="muted">{{ $m.Params.position }}</p>
+              <p class="muted">{{ $m.Params.position }}{{ if eq $m.Params.initials "PI" }} (PI){{ end }}</p>
+              {{ with $m.Params.role }}<p class="person-research" style="font-weight:500; color:var(--navy-soft);">{{ . }}</p>{{ end }}
               {{ with $m.Params.research }}<p class="person-research">{{ . }}</p>{{ end }}
               {{ with $m.Params.email }}<a class="muted" href="mailto:{{ . }}">{{ . }}</a>{{ end }}
             </div>
