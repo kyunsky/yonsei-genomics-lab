@@ -49,11 +49,11 @@ disableKinds = ["taxonomy", "term", "RSS"]
 [menu]
   [[menu.main]]
     name = "소개"
-    url = "about/"
+    pageRef = "/about"
     weight = 10
   [[menu.main]]
     name = "구성원"
-    url = "people/"
+    pageRef = "/people"
     weight = 20
   [[menu.main]]
     name = "연구 프로젝트"
