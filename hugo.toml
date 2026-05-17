@@ -8,6 +8,7 @@
 #   - 프로젝트 사이트면               "https://<id>.github.io/<repo>/"
 #   - 커스텀 도메인이면               "https://lab.yonsei.ac.kr/"
 baseURL = "https://kyunsky.github.io/yonsei-genomics-lab/"
+relativeURLs = true
 
 languageCode = "ko-kr"
 title = "Microbial Genomics Laboratory · 연세대학교 의과대학 진단검사의학과"
