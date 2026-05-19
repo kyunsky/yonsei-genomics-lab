@@ -213,7 +213,7 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 
 /* ─── 구성원 ────────────────────────────────────────────── */
 .people-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
   gap:24px;
 }
 .person{display:flex;gap:18px;align-items:flex-start}
