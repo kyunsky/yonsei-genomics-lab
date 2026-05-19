@@ -33,41 +33,41 @@ disableKinds = ["taxonomy", "term", "RSS"]
 
 # ─── 사이트 전역 파라미터 ──────────────────────────────────────
 [params]
-  labNameKo  = "유전체 연구소"
-  labNameEn  = "Genomics Laboratory"
-  department = "연세대학교 의과대학 진단검사의학과"
-  tagline    = "차세대 시퀀싱 기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
-  email      = "lab@yuhs.ac"
-  address    = "서울특별시 서대문구 연세로 50-1 연세대학교 의과대학"
+  labNameKo  = "미생물 전체 연구소"
+  labNameEn  = "Microbial Genomics Laboratory"
+  department = "연세대학교 의과대학 강남세브란스병원 진단검사의학과
+  tagline    = "AI, NGS-기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
+  address    = "서울특별시 강남구 도곡로 235 6층 대형연구과제 연구소"
+
   # 통계 카드 (홈 화면)
-  statPublications = "128"
-  statProjects     = "9"
-  statMembers      = "17"
-  statStrains      = "351"
+  statPublications = "-"
+  statProjects     = "-"
+  statMembers      = "-"
+  statStrains      = "-"
 
 # ─── 상단 메뉴 ────────────────────────────────────────────────
 [menu]
   [[menu.main]]
-    name = "ABOUT"
+    name = "ABOUT
     pageRef = "/about/"
     weight = 10
   [[menu.main]]
-    name = "구성원"
+    name = "MEMBER"
     pageRef = "/people/"
     weight = 20
   [[menu.main]]
-    name = "연구 프로젝트"
+    name = "PROJECT"
     pageRef = "/projects/"
     weight = 30
   [[menu.main]]
-    name = "출판 논문"
+    name = "PUBLICATION"
     pageRef = "/publications/"
     weight = 40
   [[menu.main]]
-    name = "협력 기관"
+    name = "COLLABORATION"
     pageRef = "/partners/"
     weight = 50
   [[menu.main]]
-    name = "Contact"
+    name = "CONTACT"
     pageRef = "/contact/"
     weight = 60
