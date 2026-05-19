@@ -33,10 +33,10 @@ disableKinds = ["taxonomy", "term", "RSS"]
 
 # ─── 사이트 전역 파라미터 ──────────────────────────────────────
 [params]
-  labNameKo  = "미생물 전체 연구소"
+  labNameKo  = "미생물 유전체 연구소"
   labNameEn  = "Microbial Genomics Laboratory"
   department = "연세대학교 의과대학 강남세브란스병원 진단검사의학과"
-  tagline    = "AI, NGS-기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다.
+  tagline    = "AI, NGS-기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
   email      = "kyunsky@yuhs.ac"
   address    = "서울특별시 강남구 도곡로 235 6층 대형연구과제 연구소"
 
@@ -49,7 +49,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
 # ─── 상단 메뉴 ────────────────────────────────────────────────
 [menu]
   [[menu.main]]
-    name = "ABOUT
+    name = "ABOUT"
     pageRef = "/about/"
     weight = 10
   [[menu.main]]
