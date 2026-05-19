@@ -136,12 +136,12 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 }
 
 /* ─── 블록 / 카드 ───────────────────────────────────────── */
-.block{padding:88px 0 140px;border-bottom:1px solid var(--line)}
+.block{padding:88px 0;border-bottom:1px solid var(--line)}
 .block-head{
   display:flex;align-items:baseline;justify-content:space-between;
   margin-bottom:2.4rem;
 }
-.block h2{position:relative;padding-left:18px}
+.block h2{position:relative;padding-left:18px;margin-bottom:2.4rem}
 .block h2::before{
   content:"";position:absolute;left:0;top:6px;width:5px;height:calc(100% - 12px);
   background:var(--navy);border-radius:3px;
@@ -262,5 +262,5 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   .hero-tagline{font-size:1rem}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat{border-right:none;border-bottom:1px solid var(--line)}
-  .block{padding:60px 0 100px}
+  .block{padding:60px 0}
 }
