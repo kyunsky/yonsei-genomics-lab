@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="container">
 <article class="page">
-  <a class="back reveal in" href="{{ (site.GetPage "/projects").RelPermalink }}">← 프로젝트 목록</a>  
+  <a class="back reveal in" href="{{ (site.GetPage "/projects").RelPermalink }}">← 프로젝트 목록</a>
   <div class="reveal in d1">
     <span class="tag tag-{{ .Params.status | urlize }}">{{ .Params.status }}</span>
     <h1>{{ .Title }}</h1>
