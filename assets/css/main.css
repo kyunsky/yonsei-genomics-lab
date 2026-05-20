@@ -117,7 +117,7 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 .btn-ghost:hover{color:#fff;background:rgba(255,255,255,.08)}
 
 /* ─── 통계 ──────────────────────────────────────────────── */
-.stats{
+.stats{max-width:var(--maxw);margin:0 auto;padding:0 32px;
   display:grid;grid-template-columns:repeat(4,1fr);
   border-bottom:1px solid var(--line);
 }
@@ -261,7 +261,7 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   .hero{padding:72px 0 64px}
   .hero h1{font-size:2.2rem}
   .hero-tagline{font-size:1rem}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats{max-width:var(--maxw);margin:0 auto;padding:0 32px;grid-template-columns:repeat(2,1fr)}
   .stat{border-right:none;border-bottom:1px solid var(--line)}
   .block{padding:60px 0}
 }
