@@ -266,3 +266,27 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   .stat{border-right:none;border-bottom:1px solid var(--line)}
   .block{padding:60px 0}
 }
+
+/* ─── 출판 논문 연도 필터 ─────────────────────── */
+.year-filter{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:2.4rem;
+}
+.year-btn{
+  font:inherit;cursor:pointer;
+  padding:8px 18px;
+  border:1px solid var(--line);
+  background:#fff;color:var(--ink);
+  border-radius:999px;
+  font-size:.95rem;font-weight:500;
+  transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease);
+}
+.year-btn:hover{
+  border-color:var(--navy);
+  color:var(--navy);
+}
+.year-btn.is-active{
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff;
+}

@@ -74,20 +74,59 @@
   {{/* ─── 논문 ───────────────────────────────── */}}
   {{ else if eq .Section "publications" }}
     {{ $pubs := where .Site.RegularPages "Section" "publications" }}
-    {{ range $pubs.GroupByParam "year" "desc" }}
-      <h2 class="role-head reveal">{{ .Key }}</h2>
-      <ul class="pub-list reveal d1">
-        {{ range sort .Pages "Title" }}
-        <li>
-          <div>
-            <span class="pub-title">{{ .Title }}</span>
-            <span class="muted">{{ .Params.authors }}</span>
-            <span class="muted"><em>{{ .Params.journal }}</em>{{ with .Params.doi }} · <a href="https://doi.org/{{ . }}">DOI</a>{{ end }}</span>
-          </div>
-        </li>
-        {{ end }}
-      </ul>
-    {{ end }}
+    {{ $groups := $pubs.GroupByParam "year" "desc" }}
+
+    {{/* 연도 버튼 그룹 */}}
+    <div class="year-filter reveal in" role="tablist">
+      {{ range $groups }}
+        <button type="button" class="year-btn" data-year="{{ .Key }}">{{ .Key }}</button>
+      {{ end }}
+    </div>
+
+    {{/* 연도별 논문 섹션 */}}
+    <div class="year-sections">
+      {{ range $groups }}
+        <section class="year-section" data-year="{{ .Key }}">
+          <h2 class="role-head">{{ .Key }}</h2>
+          <ul class="pub-list">
+            {{ range .Pages.ByWeight }}
+            <li>
+              <div>
+                <span class="pub-title">{{ .Title }}</span>
+                <span class="muted">{{ .Params.authors }}</span>
+                <span class="muted"><em>{{ .Params.journal }}</em>{{ with .Params.doi }} · <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}</span>
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </div>
+
+    {{/* 연도 필터 동작 스크립트 */}}
+    <script>
+    (function() {
+      var buttons = document.querySelectorAll('.year-btn');
+      var sections = document.querySelectorAll('.year-section');
+      if (!buttons.length) return;
+
+      function activate(year) {
+        buttons.forEach(function(b) {
+          b.classList.toggle('is-active', b.dataset.year === year);
+        });
+        sections.forEach(function(s) {
+          s.style.display = (s.dataset.year === year) ? '' : 'none';
+        });
+      }
+
+      buttons.forEach(function(b) {
+        b.addEventListener('click', function() { activate(b.dataset.year); });
+      });
+
+      // 최신 연도(첫 버튼)를 기본 활성화
+      activate(buttons[0].dataset.year);
+    })();
+    </script>
   {{ end }}
 </article>
 </div>
