@@ -32,7 +32,7 @@
     {{ end }}
 
     {{/* [2] 4대 연구 분야별 섹션 운영 */}}
-    {{ $themes := slice "AMR surveillance" "Microbiome and Artificial Intelligence" "Research planning" "Human Genetics" }}
+    {{ $themes := slice "AMR surveillance" "Research planning" "Human Genetics" }}
     {{ range $themes }}
       {{ $theme := . }}
       {{/* 해당 연구 분야에 속하는 멤버들을 긁어옵니다 */}}
