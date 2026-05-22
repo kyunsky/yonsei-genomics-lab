@@ -36,9 +36,17 @@
     {{ $theme := . }}
     {{ $members := where (where $.Site.RegularPages "Section" "people") "Params.research_theme" $theme }}
     
-    {{ with $members }}
-      <h2 class="role-head reveal">{{ $theme }}</h2>
-      <div class="people-grid" style="margin-bottom: 4rem;">
+{{ with $members }}
+  {{ if eq $theme "Human Genetics" }}
+    <h2 class="role-head reveal">
+      <a href="https://pgmlab.org/" target="_blank" rel="noopener" class="theme-link">
+        {{ $theme }}<span class="theme-link-icon" aria-hidden="true">↗</span>
+      </a>
+    </h2>
+  {{ else }}
+    <h2 class="role-head reveal">{{ $theme }}</h2>
+  {{ end }}
+  <div class="people-grid" style="margin-bottom: 4rem;">
         {{ range $i, $m := .ByWeight }}
         <div class="person reveal d{{ add (mod $i 4) 1 }}">
           <div class="avatar">{{ substr $m.Params.initials 0 2 | default "LAB" }}</div>

@@ -290,3 +290,25 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   border-color:var(--navy);
   color:#fff;
 }
+
+/* ─── 분야 헤더 외부 링크 ─────────────────────── */
+.theme-link{
+  color:inherit;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  transition:color .15s var(--ease);
+}
+.theme-link:hover{
+  color:var(--navy);
+}
+.theme-link-icon{
+  font-size:.7em;
+  color:var(--accent);
+  transition:transform .15s var(--ease);
+  display:inline-block;
+}
+.theme-link:hover .theme-link-icon{
+  transform:translate(2px,-2px);
+}
