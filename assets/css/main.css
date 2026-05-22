@@ -373,7 +373,7 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   pointer-events:none;
 }
 .search-results .pub-list li[style*="display: none"]{display:none!important}
-.search-empty{
+.search-empty,.search-prompt{
   text-align:center;
   color:var(--muted);
   padding:60px 0;

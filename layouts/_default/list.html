@@ -142,6 +142,7 @@
         </li>
         {{ end }}
       </ul>
+      <p class="search-prompt" hidden>검색어를 입력하세요.</p>
       <p class="search-empty" hidden>검색 결과가 없습니다.</p>
     </div>
 
@@ -160,7 +161,7 @@
       var searchItems = document.querySelectorAll('.search-item');
       var searchCount = document.querySelector('.search-count');
       var searchEmpty = document.querySelector('.search-empty');
-
+      var searchPrompt = document.querySelector('.search-prompt');
       if (!yearButtons.length) return;
 
       function activateYear(year) {
@@ -194,25 +195,32 @@
       }
 
       function runSearch(query) {
-        var q = query.trim().toLowerCase();
-        var visible = 0;
-        searchItems.forEach(function(item) {
-          var match = q === '' ||
-            item.dataset.title.indexOf(q) !== -1 ||
-            item.dataset.authors.indexOf(q) !== -1 ||
-            item.dataset.journal.indexOf(q) !== -1;
-          item.style.display = match ? '' : 'none';
-          if (match) visible++;
-        });
-        if (q === '') {
-          searchCount.hidden = true;
-          searchEmpty.hidden = true;
-        } else {
-          searchCount.textContent = visible + '편';
-          searchCount.hidden = false;
-          searchEmpty.hidden = visible !== 0;
-        }
-      }
+  var q = query.trim().toLowerCase();
+  var visible = 0;
+  if (q === '') {
+    // 검색어 없음 → 모든 항목 숨김 + 안내 표시
+    searchItems.forEach(function(item) {
+      item.style.display = 'none';
+    });
+    searchCount.hidden = true;
+    searchEmpty.hidden = true;
+    searchPrompt.hidden = false;
+    return;
+  }
+  // 검색어 있음 → 매칭된 것만 표시
+  searchItems.forEach(function(item) {
+    var match =
+      item.dataset.title.indexOf(q) !== -1 ||
+      item.dataset.authors.indexOf(q) !== -1 ||
+      item.dataset.journal.indexOf(q) !== -1;
+    item.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  searchCount.textContent = visible + '편';
+  searchCount.hidden = false;
+  searchPrompt.hidden = true;
+  searchEmpty.hidden = visible !== 0;
+}
 
       yearButtons.forEach(function(b) {
         b.addEventListener('click', function() { activateYear(b.dataset.year); });
