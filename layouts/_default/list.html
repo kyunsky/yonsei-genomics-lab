@@ -32,16 +32,14 @@
     {{ end }}
 
     {{/* [2] 4대 연구 분야별 섹션 운영 */}}
-    {{ $themes := slice "AMR surveillance" "Research planning" "Human Genetics" }}
+    {{ $themes := slice "AMR surveillance" "Microbiome and Artificial Intelligence" "Research planning" "Human Genetics" }}
     {{ range $themes }}
       {{ $theme := . }}
-      {{/* 해당 연구 분야에 속하는 멤버들을 긁어옵니다 */}}
       {{ $members := where (where $.Site.RegularPages "Section" "people") "Params.research_theme" $theme }}
       
       {{ with $members }}
         <h2 class="role-head reveal">{{ $theme }}</h2>
         <div class="people-grid" style="margin-bottom: 4rem;">
-          {{/* .ByWeight를 사용해 가중치가 낮은 pi2가 가장 먼저 배치됩니다 */}}
           {{ range $i, $m := .ByWeight }}
           <div class="person reveal d{{ add (mod $i 4) 1 }}">
             <div class="avatar">{{ substr $m.Params.initials 0 2 | default "LAB" }}</div>
@@ -83,7 +81,32 @@
       {{ end }}
     </div>
 
-    {{/* 연도별 논문 섹션 */}}
+    {{/* 검색 영역 */}}
+    <div class="search-bar reveal in d1">
+      <button type="button" class="search-toggle" aria-label="논문 검색">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+        </svg>
+        <span class="search-toggle-label">검색</span>
+      </button>
+      <div class="search-input-wrap" hidden>
+        <svg class="search-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+        </svg>
+        <input type="text" class="search-input" placeholder="제목, 저자, 저널명 검색..." aria-label="논문 검색">
+        <span class="search-count" hidden></span>
+        <button type="button" class="search-close" aria-label="검색 닫기">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {{/* 연도별 논문 섹션 (연도 필터 모드) */}}
     <div class="year-sections">
       {{ range $groups }}
         <section class="year-section" data-year="{{ .Key }}">
@@ -103,28 +126,107 @@
       {{ end }}
     </div>
 
-    {{/* 연도 필터 동작 스크립트 */}}
+    {{/* 검색 결과 섹션 (검색 모드) */}}
+    <div class="search-results" hidden>
+      <ul class="pub-list">
+        {{ range $pubs.ByWeight }}
+        <li class="search-item"
+            data-title="{{ .Title | lower }}"
+            data-authors="{{ printf "%s %s" .Params.first_authors .Params.corresponding_authors | lower }}"
+            data-journal="{{ .Params.journal | lower }}">
+          <div>
+            <span class="pub-title">{{ .Title }}</span>
+            <span class="muted">{{ .Params.first_authors }}, <strong>{{ .Params.corresponding_authors }}</strong>, et al.</span>
+            <span class="muted"><em>{{ .Params.journal }}</em> · {{ .Params.year }}{{ with .Params.doi }} · <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}</span>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+      <p class="search-empty" hidden>검색 결과가 없습니다.</p>
+    </div>
+
+    {{/* 연도 필터 + 검색 동작 스크립트 */}}
     <script>
     (function() {
-      var buttons = document.querySelectorAll('.year-btn');
-      var sections = document.querySelectorAll('.year-section');
-      if (!buttons.length) return;
+      var yearButtons = document.querySelectorAll('.year-btn');
+      var yearSections = document.querySelectorAll('.year-section');
+      var yearFilter = document.querySelector('.year-filter');
+      var yearSectionsWrap = document.querySelector('.year-sections');
+      var searchToggle = document.querySelector('.search-toggle');
+      var searchInputWrap = document.querySelector('.search-input-wrap');
+      var searchInput = document.querySelector('.search-input');
+      var searchClose = document.querySelector('.search-close');
+      var searchResults = document.querySelector('.search-results');
+      var searchItems = document.querySelectorAll('.search-item');
+      var searchCount = document.querySelector('.search-count');
+      var searchEmpty = document.querySelector('.search-empty');
 
-      function activate(year) {
-        buttons.forEach(function(b) {
+      if (!yearButtons.length) return;
+
+      function activateYear(year) {
+        yearButtons.forEach(function(b) {
           b.classList.toggle('is-active', b.dataset.year === year);
         });
-        sections.forEach(function(s) {
+        yearSections.forEach(function(s) {
           s.style.display = (s.dataset.year === year) ? '' : 'none';
         });
       }
 
-      buttons.forEach(function(b) {
-        b.addEventListener('click', function() { activate(b.dataset.year); });
+      function enterSearchMode() {
+        searchToggle.hidden = true;
+        searchInputWrap.hidden = false;
+        yearFilter.classList.add('dimmed');
+        yearSectionsWrap.hidden = true;
+        searchResults.hidden = false;
+        searchInput.value = '';
+        runSearch('');
+        setTimeout(function() { searchInput.focus(); }, 50);
+      }
+
+      function exitSearchMode() {
+        searchInputWrap.hidden = true;
+        searchToggle.hidden = false;
+        yearFilter.classList.remove('dimmed');
+        yearSectionsWrap.hidden = false;
+        searchResults.hidden = true;
+        // 원래 활성화된 연도로 복귀 (첫 버튼)
+        activateYear(yearButtons[0].dataset.year);
+      }
+
+      function runSearch(query) {
+        var q = query.trim().toLowerCase();
+        var visible = 0;
+        searchItems.forEach(function(item) {
+          var match = q === '' ||
+            item.dataset.title.indexOf(q) !== -1 ||
+            item.dataset.authors.indexOf(q) !== -1 ||
+            item.dataset.journal.indexOf(q) !== -1;
+          item.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        if (q === '') {
+          searchCount.hidden = true;
+          searchEmpty.hidden = true;
+        } else {
+          searchCount.textContent = visible + '편';
+          searchCount.hidden = false;
+          searchEmpty.hidden = visible !== 0;
+        }
+      }
+
+      yearButtons.forEach(function(b) {
+        b.addEventListener('click', function() { activateYear(b.dataset.year); });
+      });
+
+      searchToggle.addEventListener('click', enterSearchMode);
+      searchClose.addEventListener('click', exitSearchMode);
+      searchInput.addEventListener('input', function() { runSearch(searchInput.value); });
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') exitSearchMode();
       });
 
       // 최신 연도(첫 버튼)를 기본 활성화
-      activate(buttons[0].dataset.year);
+      activateYear(yearButtons[0].dataset.year);
     })();
     </script>
   {{ end }}

@@ -312,3 +312,70 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 .theme-link:hover .theme-link-icon{
   transform:translate(2px,-2px);
 }
+/* ─── 출판 논문 검색 ───────────────────────────── */
+.search-bar{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:2.4rem;
+}
+.search-toggle{
+  font:inherit;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;
+  border:1px solid var(--line);
+  background:#fff;color:var(--ink);
+  border-radius:999px;
+  font-size:.95rem;font-weight:500;
+  transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease);
+}
+.search-toggle:hover{
+  border-color:var(--navy);
+  color:var(--navy);
+}
+.search-toggle svg{flex-shrink:0}
+.search-input-wrap{
+  display:flex;align-items:center;gap:8px;
+  flex:1;max-width:560px;
+  padding:6px 14px 6px 16px;
+  border:1px solid var(--navy);
+  background:#fff;
+  border-radius:999px;
+  transition:box-shadow .2s var(--ease);
+}
+.search-input-wrap:focus-within{
+  box-shadow:0 0 0 3px rgba(10,49,97,.12);
+}
+.search-input-icon{flex-shrink:0;color:var(--navy)}
+.search-input{
+  flex:1;
+  font:inherit;font-size:.95rem;
+  border:none;outline:none;background:transparent;color:var(--ink);
+  padding:6px 0;
+}
+.search-input::placeholder{color:var(--muted)}
+.search-count{
+  font-size:.82rem;color:var(--muted);
+  white-space:nowrap;
+}
+.search-close{
+  font:inherit;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;
+  border:none;background:transparent;color:var(--muted);
+  border-radius:50%;
+  transition:background .15s var(--ease),color .15s var(--ease);
+}
+.search-close:hover{
+  background:var(--line-soft);
+  color:var(--navy);
+}
+.year-filter.dimmed{
+  opacity:.4;
+  pointer-events:none;
+}
+.search-results .pub-list li[style*="display: none"]{display:none!important}
+.search-empty{
+  text-align:center;
+  color:var(--muted);
+  padding:60px 0;
+  font-size:.95rem;
+}
