@@ -41,10 +41,6 @@ disableKinds = ["taxonomy", "term", "RSS"]
   address    = "서울특별시 강남구 도곡로 235 6층 대형연구과제 연구소"
 
   # 통계 카드 (홈 화면)
-  statPublications = "-"
-  statProjects     = "-"
-  statMembers      = "-"
-  statStrains      = "-"
 
 # ─── 상단 메뉴 ────────────────────────────────────────────────
 [menu]
