@@ -12,27 +12,29 @@
     <p class="search-empty">등록된 공지가 없습니다.</p>
   {{ else }}
   <ul class="pub-list reveal in d1">
-    {{/* 고정 공지 우선 (최신순) */}}
     {{ range sort $pinned "Date" "desc" }}
     <li>
       <div class="pub-year" style="flex:0 0 auto;display:flex;align-items:flex-start;padding-top:2px;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--navy)" aria-hidden="true" title="고정"><path d="M14 4v6l3 3v2h-5v5l-1 1-1-1v-5H4v-2l3-3V4H6V2h10v2z"/></svg>
       </div>
       <div>
-        <span class="tag tag-{{ .Params.category | urlize }}">{{ .Params.category }}</span>
-        <a class="pub-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="notice-head">
+          <span class="tag tag-{{ .Params.category | urlize }}">{{ .Params.category }}</span>
+          <a class="pub-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </div>
         <span class="muted">{{ .Date.Format "2006.01.02" }}</span>
         {{ with .Params.summary }}<span class="muted">{{ . }}</span>{{ end }}
       </div>
     </li>
     {{ end }}
-    {{/* 일반 공지 (최신순) */}}
     {{ range sort $normal "Date" "desc" }}
     <li>
       <span class="pub-year" style="font-size:.86rem;font-weight:600;color:var(--muted);">{{ .Date.Format "01.02" }}</span>
       <div>
-        <span class="tag tag-{{ .Params.category | urlize }}">{{ .Params.category }}</span>
-        <a class="pub-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="notice-head">
+          <span class="tag tag-{{ .Params.category | urlize }}">{{ .Params.category }}</span>
+          <a class="pub-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </div>
         {{ with .Params.summary }}<span class="muted">{{ . }}</span>{{ end }}
       </div>
     </li>

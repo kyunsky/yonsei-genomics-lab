@@ -389,3 +389,8 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 /* 공지 목록 제목 링크 */
 .pub-list a.pub-title{color:var(--ink);transition:color .2s var(--ease)}
 .pub-list a.pub-title:hover{color:var(--navy)}
+
+/* 공지 분류 뱃지 + 제목 한 줄 정렬 */
+.notice-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.notice-head .tag{margin-bottom:0;flex:0 0 auto}
+.pub-list .notice-head a.pub-title{display:inline;margin-bottom:0}
