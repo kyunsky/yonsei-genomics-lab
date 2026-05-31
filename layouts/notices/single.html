@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container">
+  <article class="page">
+    <a class="back" href="{{ "/notices/" | relLangURL }}">← 공지사항 목록</a>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+      <span class="tag tag-{{ .Params.category | urlize }}">{{ .Params.category }}</span>
+      <span class="muted">{{ .Date.Format "2006년 01월 02일" }}{{ if .Params.pinned }} · 고정 공지{{ end }}</span>
+    </div>
+    <h1 class="reveal in">{{ .Title }}</h1>
+    <div class="prose reveal in d1">
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}

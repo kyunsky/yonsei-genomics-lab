@@ -1,0 +1,15 @@
+[build]
+  publish = "public"
+  command = "hugo --gc --minify -b $URL"
+
+[build.environment]
+  HUGO_VERSION = "0.128.0"
+
+# 운영 배포: 커스텀 도메인 기준으로 baseURL 설정
+[context.production.environment]
+  HUGO_BASEURL = "https://yonsei-microbial-genomics.org/"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

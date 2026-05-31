@@ -68,3 +68,8 @@ disableKinds = ["taxonomy", "term", "RSS"]
     name = "CONTACT"
     pageRef = "/contact/"
     weight = 60
+
+[[menu.main]]
+  name = "NOTICE"
+  pageRef = "/notices/"
+  weight = 55

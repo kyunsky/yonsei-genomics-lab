@@ -380,3 +380,12 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   font-size:.95rem;
 }
 [hidden]{display:none!important}
+
+/* ─── 공지 분류 뱃지 ─────────────────────────── */
+.tag-공지{background:#eaf1f9;color:var(--navy)}
+.tag-안내{background:#e3f4ec;color:#137a4e}
+.tag-점검{background:#fdf0e3;color:#9a6b1f}
+.tag-이벤트{background:#eee9fa;color:#5340a8}
+/* 공지 목록 제목 링크 */
+.pub-list a.pub-title{color:var(--ink);transition:color .2s var(--ease)}
+.pub-list a.pub-title:hover{color:var(--navy)}

@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# 업로드한 이미지가 저장될 위치 (필요 시 사용)
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+# 관리 화면 언어
+locale: "ko"
+
+collections:
+  - name: "notices"
+    label: "공지사항"
+    label_singular: "공지"
+    folder: "content/notices"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}  ·  {{category}}{{#if pinned}}  · 📌 고정{{/if}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { name: "title", label: "제목", widget: "string" }
+      - { name: "date", label: "작성일", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - name: "category"
+        label: "분류"
+        widget: "select"
+        options: ["공지", "안내", "점검", "이벤트"]
+        default: "공지"
+      - { name: "pinned", label: "상단 고정", widget: "boolean", default: false, required: false }
+      - { name: "summary", label: "한 줄 요약 (목록에 표시, 선택)", widget: "string", required: false }
+      - { name: "draft", label: "임시저장 (체크 시 사이트에 표시 안 됨)", widget: "boolean", default: false, required: false }
+      - { name: "body", label: "내용", widget: "markdown" }
