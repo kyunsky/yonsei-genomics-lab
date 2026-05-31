@@ -16,7 +16,7 @@ collections:
     folder: "content/notices"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}}  ·  {{category}}{{#if pinned}}  · 📌 고정{{/if}}"
+    summary: "{{title}}  ·  {{category}}"
     sortable_fields: ["date", "title"]
     fields:
       - { name: "title", label: "제목", widget: "string" }
