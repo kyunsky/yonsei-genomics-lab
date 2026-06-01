@@ -8,5 +8,5 @@ title: "CONTACT"
 
 ## 문의
 
-- 이메일: kyunsky@yuhs.ac
+- 이메일: psy1982@yuhs.ac (박소영 연구원)
 - 공동연구 및 대학원 진학 문의를 환영합니다.
