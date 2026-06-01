@@ -5,5 +5,5 @@ position: "연구원"
 role: "선임연구원"
 research: "항생제 감수성 시험"
 initials: "R"
-weight: 5
+weight: 6
 ---
