@@ -5,5 +5,5 @@ position: "연구원"
 role: "선임연구원"
 research: "재무, 회계"
 initials: "SR"
-weight: 5.5
+weight: 5
 ---
