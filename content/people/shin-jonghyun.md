@@ -1,9 +1,9 @@
 ---
-title: "권준기"
+title: "신종현"
 research_theme: "Microbiome and Artificial Intelligence"
 position: "박사후연구원"
-research: "Microbiome, Microbial WGS"
-email: "kwonjoongi@yuhs.ac"
+research: "AMR, Microbiome"
+email: "shinjh0714@yuhs.ac"
 initials: "PD"
-weight: 3
+weight: 4
 ---

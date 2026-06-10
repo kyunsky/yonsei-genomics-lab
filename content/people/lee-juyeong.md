@@ -6,5 +6,5 @@ role: "ONT sequencing"
 research: "Microbial WGS"
 email: "juyeong0190@gmail.com"
 initials: "R"
-weight: 4
+weight: 5
 ---
