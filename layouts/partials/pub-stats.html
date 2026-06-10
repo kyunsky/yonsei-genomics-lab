@@ -1,0 +1,99 @@
+{{ $pubs := where .Site.RegularPages "Section" "publications" }}
+{{ $groups := $pubs.GroupByParam "year" "desc" }}
+{{ $maxCount := 1 }}
+{{ range $groups }}{{ if gt (len .Pages) $maxCount }}{{ $maxCount = len .Pages }}{{ end }}{{ end }}
+{{ $pubData := slice }}
+{{ range $pubs }}{{ $pubData = $pubData | append (dict "y" .Params.year "d" .Params.doi) }}{{ end }}
+
+<div class="pub-stats reveal in d1">
+  <div class="pub-stat-card">
+    <div class="pub-stat-title">연도별 출판 편수</div>
+    <div class="pub-stat-chart">
+      {{ range sort $groups "Key" "asc" }}
+        <div class="psc-col">
+          <span class="psc-val">{{ len .Pages }}</span>
+          <span class="psc-bar" style="height:{{ div (mul (len .Pages) 90) $maxCount }}px"></span>
+          <span class="psc-year">{{ .Key }}</span>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="pub-stat-card">
+    <div class="pub-stat-title">출판 연도별 누적 인용 <span class="psc-status" id="pscStatus"></span></div>
+    <div class="pub-stat-chart cite" id="pscCiteChart"></div>
+  </div>
+</div>
+
+<style>
+.pub-stats{display:flex;gap:14px;margin:1rem 0 1.75rem;flex-wrap:wrap;}
+.pub-stat-card{flex:1 1 280px;border:1px solid var(--line,#e5e7eb);border-radius:10px;padding:.75rem .9rem .6rem;background:var(--card,#fff);}
+.pub-stat-title{font-size:.8rem;font-weight:600;color:var(--navy,#1f2937);margin-bottom:.5rem;}
+.psc-status{font-weight:400;color:#9ca3af;font-size:.7rem;}
+.pub-stat-chart{display:flex;align-items:flex-end;gap:5px;height:140px;overflow-x:auto;}
+.psc-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1 0 auto;min-width:20px;}
+.psc-val{font-size:.62rem;color:#6b7280;margin-bottom:2px;font-variant-numeric:tabular-nums;}
+.psc-bar{width:14px;border-radius:3px 3px 0 0;background:var(--navy,#2563eb);display:block;}
+.pub-stat-chart.cite .psc-bar{background:#0d9488;}
+.psc-year{font-size:.6rem;color:#9ca3af;margin-top:3px;white-space:nowrap;}
+</style>
+
+<script>
+(function(){
+  var PUBS={{ $pubData | jsonify | safeJS }};
+  var CONTACT_EMAIL="REPLACE_WITH_YOUR_EMAIL";
+  var chart=document.getElementById('pscCiteChart');
+  var statusEl=document.getElementById('pscStatus');
+  if(!chart) return;
+  statusEl.textContent='· 불러오는 중';
+
+  function py(y){ if(y==null||y==='') return null; var n=parseInt(y,10); return isFinite(n)?n:null; }
+  function nd(d){ if(!d) return null; return String(d).trim().toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//,'').replace(/^doi:/,'').trim(); }
+  function ed(d){ return encodeURIComponent(d).replace(/%2F/g,'/'); }
+  function ch(a,n){var r=[];for(var i=0;i<a.length;i+=n)r.push(a.slice(i,i+n));return r;}
+
+  function bars(el,entries,max){
+    el.innerHTML='';
+    var H=90;
+    entries.forEach(function(p){
+      var v=p[1], h=v>0?Math.max(3,Math.round(v/max*H)):0;
+      var c=document.createElement('div');c.className='psc-col';
+      c.innerHTML='<span class="psc-val">'+v.toLocaleString()+'</span><span class="psc-bar" style="height:'+h+'px"></span><span class="psc-year">'+p[0]+'</span>';
+      el.appendChild(c);
+    });
+  }
+
+  var d2y={};
+  PUBS.forEach(function(p){var k=nd(p.d),y=py(p.y);if(k)d2y[k]=y;});
+  var dois=Object.keys(d2y);
+  if(!dois.length){ statusEl.textContent='· DOI 없음'; return; }
+
+  (async function(){
+    var cby={},matched=0;
+    var mailto=(CONTACT_EMAIL.indexOf('@')>0&&CONTACT_EMAIL.indexOf('REPLACE')<0)?('&mailto='+encodeURIComponent(CONTACT_EMAIL)):'';
+    try{
+      var groups=ch(dois,40);
+      for(var i=0;i<groups.length;i++){
+        var fv='doi:'+groups[i].map(ed).join('|');
+        var url='https://api.openalex.org/works?per-page=50&select=doi,cited_by_count,publication_year&filter='+fv.replace(/\|/g,'%7C')+mailto;
+        var res=await fetch(url);
+        if(!res.ok) throw new Error(res.status);
+        var data=await res.json();
+        (data.results||[]).forEach(function(w){
+          var k=nd(w.doi); var y=(d2y[k]!=null?d2y[k]:w.publication_year);
+          if(y==null) return;
+          cby[y]=(cby[y]||0)+(w.cited_by_count||0); matched++;
+        });
+        await new Promise(function(r){setTimeout(r,250);});
+      }
+    }catch(e){ statusEl.textContent='· 불러오기 실패'; return; }
+    var yrs=Object.keys(cby).map(Number).sort(function(a,b){return a-b;});
+    if(!yrs.length){ statusEl.textContent='· 데이터 없음'; return; }
+    var ents=yrs.map(function(y){return [y,cby[y]];});
+    var mx=Math.max.apply(null,ents.map(function(e){return e[1];}));
+    var total=ents.reduce(function(s,e){return s+e[1];},0);
+    bars(chart,ents,mx);
+    statusEl.textContent='· 총 '+total.toLocaleString()+'회 (DOI 색인 기준 추정치)';
+  })();
+})();
+</script>

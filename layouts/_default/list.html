@@ -106,6 +106,8 @@
       </div>
     </div>
 
+    {{ partial "pub-stats.html" . }}
+
     {{/* 연도별 논문 섹션 (연도 필터 모드) */}}
     <div class="year-sections">
       {{ range $groups }}
