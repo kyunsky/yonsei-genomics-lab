@@ -153,6 +153,17 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));
   gap:20px;
 }
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+}
+.gallery-item img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:var(--radius);border:1px solid var(--line);
+  display:block;transition:transform .3s var(--ease);
+}
+.gallery-item:hover img{transform:translateY(-4px)}
+.gallery-item figcaption{margin-top:.6rem;font-size:.9rem}
 .card{
   border:1px solid var(--line);border-radius:var(--radius);
   padding:26px 24px;background:var(--bg);

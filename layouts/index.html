@@ -64,4 +64,20 @@
   </div>
 </section>
 
+{{ with .Site.Data.gallery }}
+<section class="block">
+  <div class="container">
+    <h2 class="reveal">갤러리</h2>
+    <div class="gallery-grid">
+      {{ range $i, $g := . }}
+      <figure class="gallery-item reveal d{{ add (mod $i 4) 1 }}">
+        <img src="{{ $g.image | relURL }}" alt="{{ $g.caption }}" loading="lazy">
+        <figcaption class="muted">{{ $g.caption }}</figcaption>
+      </figure>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
 {{ end }}
