@@ -1,11 +1,6 @@
-# 갤러리 — 사진을 추가/수정하면 홈 화면에 자동 반영됩니다.
+# 갤러리 — 사진을 추가하면 홈 화면에 자동 표시됩니다. (비어 있으면 갤러리 섹션 미표시)
 #   1) 사진 파일을 static/images/gallery/ 에 넣고
-#   2) 아래에 image(경로)와 caption(설명)을 추가하세요.
-- image: "images/gallery/lab-2026.jpg"
-  caption: "2026 연구실 단체 사진"
-
-- image: "images/gallery/conference-kscm.jpg"
-  caption: "대한임상미생물학회 제29차 학술대회"
-
-- image: "images/gallery/sequencing-room.jpg"
-  caption: "시퀀싱 분석실"
+#   2) 아래 형식으로 항목을 추가하세요.
+#
+# - image: "images/gallery/photo1.jpg"
+#   caption: "사진 설명"

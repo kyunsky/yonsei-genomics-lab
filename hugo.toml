@@ -69,7 +69,8 @@ disableKinds = ["taxonomy", "term", "RSS"]
     pageRef = "/contact/"
     weight = 60
 
-[[menu.main]]
-  name = "NOTICE"
-  pageRef = "/notices/"
-  weight = 55
+# NOTICE 메뉴 숨김 — 다시 표시하려면 아래 주석을 해제하세요.
+# [[menu.main]]
+#   name = "NOTICE"
+#   pageRef = "/notices/"
+#   weight = 55
