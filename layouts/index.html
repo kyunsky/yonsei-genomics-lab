@@ -51,7 +51,7 @@
       <a class="more" href="{{ (site.GetPage "/publications").RelPermalink }}">전체 보기 →</a>
     </div>
     <ul class="pub-list reveal d1">
-      {{ range first 4 (sort (where .Site.RegularPages "Section" "publications") "Params.year" "desc") }}
+      {{ range first 4 (sort (sort (where .Site.RegularPages "Section" "publications") "Weight" "desc") "Params.year" "desc") }}
       <li>
         <span class="pub-year">{{ .Params.year }}</span>
         <div>
