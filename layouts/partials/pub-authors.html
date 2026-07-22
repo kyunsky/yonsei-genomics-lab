@@ -1,11 +1,14 @@
-{{- /* 저자 표기: 교신저자는 굵게. 제1저자가 교신저자에도 포함되면 중복 없이 한 번만 표시 */ -}}
+{{- /* 저자 표기: 교신저자는 굵게. 제1저자 겸 교신저자는 * 표시, 중복 없이 한 번만 표시 */ -}}
 {{- $corr := .Params.corresponding_authors -}}
 {{- $corrList := split $corr ", " -}}
+{{- $firstList := slice -}}
+{{- with .Params.first_authors }}{{ $firstList = split . ", " }}{{ end -}}
 {{- $firstOnly := slice -}}
-{{- with .Params.first_authors -}}
-  {{- range split . ", " -}}
-    {{- if not (in $corrList .) }}{{ $firstOnly = $firstOnly | append . }}{{ end -}}
-  {{- end -}}
-{{- end -}}
+{{- range $firstList }}{{ if not (in $corrList .) }}{{ $firstOnly = $firstOnly | append . }}{{ end }}{{ end -}}
 {{- if $firstOnly }}{{ delimit $firstOnly ", " }}, {{ end -}}
-<strong>{{ $corr }}</strong>, et al.
+<strong>
+{{- range $i, $name := $corrList -}}
+  {{- if $i }}, {{ end -}}
+  {{- $name -}}{{- if in $firstList $name }}*{{ end -}}
+{{- end -}}
+</strong>, et al.
