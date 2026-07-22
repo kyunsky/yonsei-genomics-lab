@@ -1,0 +1,5 @@
+{{- /* 저자 표기: 교신저자는 굵게. 제1저자와 교신저자가 같으면 한 번만 표시 */ -}}
+{{- $first := .Params.first_authors -}}
+{{- $corr := .Params.corresponding_authors -}}
+{{- if and $first (ne $first $corr) }}{{ $first }}, {{ end -}}
+<strong>{{ $corr }}</strong>, et al.

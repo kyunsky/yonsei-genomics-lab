@@ -118,7 +118,7 @@
             <li>
               <div>
                 <span class="pub-title">{{ .Title }}</span>
-                <span class="muted">{{ .Params.first_authors }}, <strong>{{ .Params.corresponding_authors }}</strong>, et al.</span>
+                <span class="muted">{{ partial "pub-authors.html" . }}</span>
                 <span class="muted"><em>{{ .Params.journal }}</em>{{ with .Params.doi }} · <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}</span>
               </div>
             </li>
@@ -138,7 +138,7 @@
             data-journal="{{ .Params.journal | lower }}">
           <div>
             <span class="pub-title">{{ .Title }}</span>
-            <span class="muted">{{ .Params.first_authors }}, <strong>{{ .Params.corresponding_authors }}</strong>, et al.</span>
+            <span class="muted">{{ partial "pub-authors.html" . }}</span>
             <span class="muted"><em>{{ .Params.journal }}</em> · {{ .Params.year }}{{ with .Params.doi }} · <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}</span>
           </div>
         </li>
