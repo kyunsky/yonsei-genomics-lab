@@ -55,7 +55,7 @@
       <li>
         <span class="pub-year">{{ .Params.year }}</span>
         <div>
-          <span class="pub-title">{{ .Title }}</span>
+          <span class="pub-title">{{ .Title | safeHTML }}</span>
           <span class="muted">{{ .Params.authors }} — <em>{{ .Params.journal }}</em></span>
         </div>
       </li>
