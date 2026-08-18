@@ -1,0 +1,53 @@
+# English UI strings — used via {{ i18n "key" }} in templates.
+aboutCta:
+  other: "About the Lab"
+pubsCta:
+  other: "View Publications"
+researchAreas:
+  other: "Research Areas"
+ongoingProjects:
+  other: "Ongoing Projects"
+viewAll:
+  other: "View all →"
+recentPubs:
+  other: "Recent Publications"
+gallery:
+  other: "Gallery"
+search:
+  other: "Search"
+searchPubs:
+  other: "Search publications"
+searchPlaceholder:
+  other: "Search title, author, journal..."
+searchClose:
+  other: "Close search"
+searchPrompt:
+  other: "Type a search term."
+searchEmpty:
+  other: "No results found."
+pubCountSuffix:
+  other: " papers"
+backToProjects:
+  other: "← All projects"
+funder:
+  other: "Funder"
+period:
+  other: "Period"
+principalInvestigator:
+  other: "Principal Investigator"
+pubsPerYear:
+  other: "Publications per Year"
+citesPerYear:
+  other: "Cumulative Citations by Publication Year"
+citeLoading:
+  other: "· loading"
+citeFailed:
+  other: "· failed to load"
+citeNoDoi:
+  other: "· no DOI"
+citeNoData:
+  other: "· no data"
+citeTotalPrefix:
+  other: "· total "
+citeTotalSuffix:
+  other: " citations (estimated from DOI indexing)"

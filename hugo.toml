@@ -31,46 +31,91 @@ disableKinds = ["taxonomy", "term", "RSS"]
     style = "github"
     noClasses = false
 
-# ─── 사이트 전역 파라미터 ──────────────────────────────────────
+# ─── 사이트 전역 파라미터 (언어별 값은 위 [languages] 블록 참고) ──
 [params]
-  labNameKo  = "미생물 유전체 연구소"
   labNameEn  = "Microbial Genomics Laboratory"
-  department = "연세대학교 의과대학 강남세브란스병원 진단검사의학과"
-  tagline    = "AI, NGS-기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
   email      = "kyunsky@yuhs.ac"
-  address    = "서울특별시 강남구 도곡로 235 6층 대형연구과제 연구소"
 
   # 통계 카드 (홈 화면)
 
 # ─── 상단 메뉴 ────────────────────────────────────────────────
-[menu]
-  [[menu.main]]
-    name = "ABOUT"
-    pageRef = "/about/"
-    weight = 10
-  [[menu.main]]
-    name = "MEMBER"
-    pageRef = "/people/"
-    weight = 20
-  [[menu.main]]
-    name = "PROJECT"
-    pageRef = "/projects/"
-    weight = 30
-  [[menu.main]]
-    name = "PUBLICATION"
-    pageRef = "/publications/"
-    weight = 40
-  [[menu.main]]
-    name = "COLLABORATION"
-    pageRef = "/partners/"
-    weight = 50
-  [[menu.main]]
-    name = "CONTACT"
-    pageRef = "/contact/"
-    weight = 60
-
-# NOTICE 메뉴 숨김 — 다시 표시하려면 아래 주석을 해제하세요.
-# [[menu.main]]
+# 다국어 사이트에서는 메뉴를 언어별로 정의해야 합니다.
+# 아래 [languages.ko] / [languages.en] 블록 안의 menus 항목을 수정하세요.
+# NOTICE 메뉴를 다시 표시하려면 각 언어 블록에 아래 항목을 추가하세요.
+# [[languages.ko.menus.main]]
 #   name = "NOTICE"
 #   pageRef = "/notices/"
 #   weight = 55
+
+# ─── 다국어 (한국어 기본 / 영어 미러 /en/) ────────────────────
+# 주의: TOML 특성상 이 블록은 반드시 파일 맨 끝에 두어야 합니다.
+#       (이 아래에 일반 키를 추가하면 languages 설정으로 흡수됩니다)
+[languages]
+  [languages.ko]
+    languageCode = "ko-kr"
+    languageName = "한국어"
+    title = "Microbial Genomics Laboratory · 연세대학교 의과대학 진단검사의학과"
+    weight = 1
+    [languages.ko.params]
+      labName    = "미생물 유전체 연구소"
+      department = "연세대학교 의과대학 강남세브란스병원 진단검사의학과"
+      tagline    = "AI, NGS-기반 임상 미생물 유전체 분석과 마이크로바이옴 연구를 통해 정밀 진단검사의학을 선도합니다."
+      address    = "서울특별시 강남구 도곡로 235 6층 대형연구과제 연구소"
+    [[languages.ko.menus.main]]
+      name = "ABOUT"
+      pageRef = "/about/"
+      weight = 10
+    [[languages.ko.menus.main]]
+      name = "MEMBER"
+      pageRef = "/people/"
+      weight = 20
+    [[languages.ko.menus.main]]
+      name = "PROJECT"
+      pageRef = "/projects/"
+      weight = 30
+    [[languages.ko.menus.main]]
+      name = "PUBLICATION"
+      pageRef = "/publications/"
+      weight = 40
+    [[languages.ko.menus.main]]
+      name = "COLLABORATION"
+      pageRef = "/partners/"
+      weight = 50
+    [[languages.ko.menus.main]]
+      name = "CONTACT"
+      pageRef = "/contact/"
+      weight = 60
+  [languages.en]
+    languageCode = "en-us"
+    languageName = "English"
+    title = "Microbial Genomics Laboratory · Yonsei University College of Medicine"
+    weight = 2
+    [languages.en.params]
+      labName    = "Microbial Genomics Laboratory"
+      department = "Dept. of Laboratory Medicine, Gangnam Severance Hospital, Yonsei University College of Medicine"
+      tagline    = "Advancing precision laboratory medicine through AI- and NGS-based clinical microbial genomics and microbiome research."
+      address    = "Large-scale Research Project Laboratory, 6F, 235 Dogok-ro, Gangnam-gu, Seoul, Republic of Korea"
+    [[languages.en.menus.main]]
+      name = "ABOUT"
+      pageRef = "/about/"
+      weight = 10
+    [[languages.en.menus.main]]
+      name = "MEMBER"
+      pageRef = "/people/"
+      weight = 20
+    [[languages.en.menus.main]]
+      name = "PROJECT"
+      pageRef = "/projects/"
+      weight = 30
+    [[languages.en.menus.main]]
+      name = "PUBLICATION"
+      pageRef = "/publications/"
+      weight = 40
+    [[languages.en.menus.main]]
+      name = "COLLABORATION"
+      pageRef = "/partners/"
+      weight = 50
+    [[languages.en.menus.main]]
+      name = "CONTACT"
+      pageRef = "/contact/"
+      weight = 60

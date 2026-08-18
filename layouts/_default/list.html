@@ -71,7 +71,8 @@
 
   {{/* ─── 논문 ───────────────────────────────── */}}
   {{ else if eq .Section "publications" }}
-    {{ $pubs := where .Site.RegularPages "Section" "publications" }}
+    {{/* 논문은 영문이라 언어별 복제 없이 기본 언어(ko) 사이트에서 가져옵니다 */}}
+    {{ $pubs := where site.Sites.Default.RegularPages "Section" "publications" }}
     {{ $groups := $pubs.GroupByParam "year" "desc" }}
 
     {{/* 연도 버튼 그룹 */}}
@@ -83,21 +84,21 @@
 
     {{/* 검색 영역 */}}
     <div class="search-bar reveal in d1">
-      <button type="button" class="search-toggle" aria-label="논문 검색">
+      <button type="button" class="search-toggle" aria-label="{{ i18n "searchPubs" }}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle>
           <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
         </svg>
-        <span class="search-toggle-label">검색</span>
+        <span class="search-toggle-label">{{ i18n "search" }}</span>
       </button>
       <div class="search-input-wrap" hidden>
         <svg class="search-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle>
           <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
         </svg>
-        <input type="text" class="search-input" placeholder="제목, 저자, 저널명 검색..." aria-label="논문 검색">
+        <input type="text" class="search-input" placeholder="{{ i18n "searchPlaceholder" }}" aria-label="{{ i18n "searchPubs" }}">
         <span class="search-count" hidden></span>
-        <button type="button" class="search-close" aria-label="검색 닫기">
+        <button type="button" class="search-close" aria-label="{{ i18n "searchClose" }}">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -144,8 +145,8 @@
         </li>
         {{ end }}
       </ul>
-      <p class="search-prompt" hidden>검색어를 입력하세요.</p>
-      <p class="search-empty" hidden>검색 결과가 없습니다.</p>
+      <p class="search-prompt" hidden>{{ i18n "searchPrompt" }}</p>
+      <p class="search-empty" hidden>{{ i18n "searchEmpty" }}</p>
     </div>
 
     {{/* 연도 필터 + 검색 동작 스크립트 */}}
@@ -218,7 +219,7 @@
     item.style.display = match ? '' : 'none';
     if (match) visible++;
   });
-  searchCount.textContent = visible + '편';
+  searchCount.textContent = visible + '{{ i18n "pubCountSuffix" }}';
   searchCount.hidden = false;
   searchPrompt.hidden = true;
   searchEmpty.hidden = visible !== 0;

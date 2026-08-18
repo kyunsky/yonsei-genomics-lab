@@ -4,7 +4,7 @@
   <h1 class="reveal in">{{ .Title }}</h1>
   {{ with .Content }}<div class="prose reveal in d1">{{ . }}</div>{{ end }}
   <div class="partner-grid">
-    {{ range $i, $p := .Site.Data.partners }}
+    {{ range $i, $p := index .Site.Data .Site.Language.Lang "partners" }}
     <div class="partner reveal d{{ add (mod $i 4) 1 }}">
       <p class="partner-name">{{ $p.name }}</p>
       <p class="muted">{{ $p.type }}</p>

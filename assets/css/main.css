@@ -82,6 +82,16 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 .site-nav a:hover::after,.site-nav a.active::after{width:100%}
 .site-nav a.active{color:var(--navy);font-weight:600}
 
+/* ─── 언어 전환 (KO | EN) ────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;margin-left:22px;
+  border:1px solid var(--line);border-radius:var(--radius-pill,999px);padding:3px}
+.lang-switch a{
+  font-size:.74rem;font-weight:600;letter-spacing:.04em;color:var(--muted);
+  padding:3px 9px;border-radius:999px;line-height:1;
+}
+.lang-switch a:hover{color:var(--navy)}
+.lang-switch a.active{background:var(--navy);color:#fff}
+
 /* ─── 히어로 (진한 네이비) ──────────────────────────────── */
 .hero{
   position:relative;background:var(--navy-deep);color:#fff;
@@ -178,8 +188,8 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
   background:#eaf1f9;color:var(--navy);padding:5px 13px;
   border-radius:var(--radius-pill);margin-bottom:12px;letter-spacing:.02em;
 }
-.tag-진행중{background:#e3f4ec;color:#137a4e}
-.tag-완료{background:#eef0f4;color:#5a6577}
+.tag-진행중,.tag-ongoing{background:#e3f4ec;color:#137a4e}
+.tag-완료,.tag-completed{background:#eef0f4;color:#5a6577}
 .period{margin-top:8px;font-size:.84rem}
 
 /* ─── 논문 목록 ─────────────────────────────────────────── */

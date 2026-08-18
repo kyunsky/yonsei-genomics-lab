@@ -1,4 +1,4 @@
-{{ $pubs := where .Site.RegularPages "Section" "publications" }}
+{{ $pubs := where site.Sites.Default.RegularPages "Section" "publications" }}
 {{ $groups := $pubs.GroupByParam "year" "desc" }}
 {{ $maxCount := 1 }}
 {{ range $groups }}{{ if gt (len .Pages) $maxCount }}{{ $maxCount = len .Pages }}{{ end }}{{ end }}
@@ -7,7 +7,7 @@
 
 <div class="pub-stats reveal in d1">
   <div class="pub-stat-card">
-    <div class="pub-stat-title">연도별 출판 편수</div>
+    <div class="pub-stat-title">{{ i18n "pubsPerYear" }}</div>
     <div class="pub-stat-chart">
       {{ range sort $groups "Key" "asc" }}
         <div class="psc-col">
@@ -20,7 +20,7 @@
   </div>
 
   <div class="pub-stat-card">
-    <div class="pub-stat-title">출판 연도별 누적 인용 <span class="psc-status" id="pscStatus"></span></div>
+    <div class="pub-stat-title">{{ i18n "citesPerYear" }} <span class="psc-status" id="pscStatus"></span></div>
     <div class="pub-stat-chart cite" id="pscCiteChart"></div>
   </div>
 </div>
@@ -45,7 +45,7 @@
   var chart=document.getElementById('pscCiteChart');
   var statusEl=document.getElementById('pscStatus');
   if(!chart) return;
-  statusEl.textContent='· 불러오는 중';
+  statusEl.textContent='{{ i18n "citeLoading" }}';
 
   function py(y){ if(y==null||y==='') return null; var n=parseInt(y,10); return isFinite(n)?n:null; }
   function nd(d){ if(!d) return null; return String(d).trim().toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//,'').replace(/^doi:/,'').trim(); }
@@ -66,7 +66,7 @@
   var d2y={};
   PUBS.forEach(function(p){var k=nd(p.d),y=py(p.y);if(k)d2y[k]=y;});
   var dois=Object.keys(d2y);
-  if(!dois.length){ statusEl.textContent='· DOI 없음'; return; }
+  if(!dois.length){ statusEl.textContent='{{ i18n "citeNoDoi" }}'; return; }
 
   (async function(){
     var cby={},matched=0;
@@ -86,14 +86,14 @@
         });
         await new Promise(function(r){setTimeout(r,250);});
       }
-    }catch(e){ statusEl.textContent='· 불러오기 실패'; return; }
+    }catch(e){ statusEl.textContent='{{ i18n "citeFailed" }}'; return; }
     var yrs=Object.keys(cby).map(Number).sort(function(a,b){return a-b;});
-    if(!yrs.length){ statusEl.textContent='· 데이터 없음'; return; }
+    if(!yrs.length){ statusEl.textContent='{{ i18n "citeNoData" }}'; return; }
     var ents=yrs.map(function(y){return [y,cby[y]];});
     var mx=Math.max.apply(null,ents.map(function(e){return e[1];}));
     var total=ents.reduce(function(s,e){return s+e[1];},0);
     bars(chart,ents,mx);
-    statusEl.textContent='· 총 '+total.toLocaleString()+'회 (DOI 색인 기준 추정치)';
+    statusEl.textContent='{{ i18n "citeTotalPrefix" }}'+total.toLocaleString()+'{{ i18n "citeTotalSuffix" }}';
   })();
 })();
 </script>

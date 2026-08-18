@@ -1,0 +1,12 @@
+# Research areas (English) — items added/edited here appear automatically on the English home page.
+- title: "Bacterial Genomics"
+  desc: "Oxford Nanopore long-read whole-genome assembly of bacteria and antimicrobial resistance gene profiling"
+
+- title: "Microbiome Research"
+  desc: "Disease-associated metagenomic analysis — standardized assay development and biomarker discovery"
+
+- title: "Clinical Translation"
+  desc: "Application of next-generation sequencing to laboratory medicine, infection control, and translational precision-medicine research"
+
+- title: "Bioinformatics Pipelines"
+  desc: "Large-scale server operation, standardization and QC of large sequencing datasets, and reproducible analysis workflows"

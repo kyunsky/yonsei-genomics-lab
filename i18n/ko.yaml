@@ -1,0 +1,53 @@
+# 한국어 UI 문자열 — 템플릿의 {{ i18n "키" }} 에서 사용됩니다.
+aboutCta:
+  other: "연구소 소개"
+pubsCta:
+  other: "출판 논문 보기"
+researchAreas:
+  other: "연구 분야"
+ongoingProjects:
+  other: "진행 중인 프로젝트"
+viewAll:
+  other: "전체 보기 →"
+recentPubs:
+  other: "최근 출판 논문"
+gallery:
+  other: "갤러리"
+search:
+  other: "검색"
+searchPubs:
+  other: "논문 검색"
+searchPlaceholder:
+  other: "제목, 저자, 저널명 검색..."
+searchClose:
+  other: "검색 닫기"
+searchPrompt:
+  other: "검색어를 입력하세요."
+searchEmpty:
+  other: "검색 결과가 없습니다."
+pubCountSuffix:
+  other: "편"
+backToProjects:
+  other: "← 프로젝트 목록"
+funder:
+  other: "연구비 지원"
+period:
+  other: "연구 기간"
+principalInvestigator:
+  other: "책임연구자"
+pubsPerYear:
+  other: "연도별 출판 편수"
+citesPerYear:
+  other: "출판 연도별 누적 인용"
+citeLoading:
+  other: "· 불러오는 중"
+citeFailed:
+  other: "· 불러오기 실패"
+citeNoDoi:
+  other: "· DOI 없음"
+citeNoData:
+  other: "· 데이터 없음"
+citeTotalPrefix:
+  other: "· 총 "
+citeTotalSuffix:
+  other: "회 (DOI 색인 기준 추정치)"

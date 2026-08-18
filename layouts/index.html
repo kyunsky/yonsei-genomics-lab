@@ -3,20 +3,20 @@
 <section class="hero">
   <div class="container">
     <p class="eyebrow">YONSEI UNIVERSITY COLLEGE OF MEDICINE</p>
-    <h1>{{ .Site.Params.labNameKo }}</h1>
+    <h1>{{ .Site.Params.labName }}</h1>
     <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
     <div class="hero-actions">
-      <a class="btn" href="{{ (site.GetPage "/about").RelPermalink }}">연구소 소개</a>
-      <a class="btn btn-ghost" href="{{ (site.GetPage "/publications").RelPermalink }}">출판 논문 보기</a>
+      <a class="btn" href="{{ (site.GetPage "/about").RelPermalink }}">{{ i18n "aboutCta" }}</a>
+      <a class="btn btn-ghost" href="{{ (site.GetPage "/publications").RelPermalink }}">{{ i18n "pubsCta" }}</a>
     </div>
   </div>
 </section>
 
 <section class="block">
   <div class="container">
-    <h2 class="reveal">연구 분야</h2>
+    <h2 class="reveal">{{ i18n "researchAreas" }}</h2>
     <div class="card-grid">
-      {{ range $i, $a := .Site.Data.research_areas }}
+      {{ range $i, $a := index .Site.Data .Site.Language.Lang "research_areas" }}
       <div class="card reveal d{{ add (mod $i 4) 1 }}">
         <h3>{{ $a.title }}</h3>
         <p class="muted">{{ $a.desc }}</p>
@@ -29,8 +29,8 @@
 <section class="block">
   <div class="container">
     <div class="block-head reveal">
-      <h2>진행 중인 프로젝트</h2>
-      <a class="more" href="{{ (site.GetPage "/projects").RelPermalink }}">전체 보기 →</a>
+      <h2>{{ i18n "ongoingProjects" }}</h2>
+      <a class="more" href="{{ (site.GetPage "/projects").RelPermalink }}">{{ i18n "viewAll" }}</a>
     </div>
     <div class="card-grid">
       {{ range $i, $p := first 3 (where .Site.RegularPages "Section" "projects") }}
@@ -47,11 +47,12 @@
 <section class="block">
   <div class="container">
     <div class="block-head reveal">
-      <h2>최근 출판 논문</h2>
-      <a class="more" href="{{ (site.GetPage "/publications").RelPermalink }}">전체 보기 →</a>
+      <h2>{{ i18n "recentPubs" }}</h2>
+      <a class="more" href="{{ (site.GetPage "/publications").RelPermalink }}">{{ i18n "viewAll" }}</a>
     </div>
     <ul class="pub-list reveal d1">
-      {{ range first 4 (sort (sort (where .Site.RegularPages "Section" "publications") "Weight" "desc") "Params.year" "desc") }}
+      {{/* 논문은 영문이라 언어별 복제 없이 기본 언어(ko) 사이트에서 가져옵니다 */}}
+      {{ range first 4 (sort (sort (where site.Sites.Default.RegularPages "Section" "publications") "Weight" "desc") "Params.year" "desc") }}
       <li>
         <span class="pub-year">{{ .Params.year }}</span>
         <div>
@@ -67,7 +68,7 @@
 {{ with .Site.Data.gallery }}
 <section class="block">
   <div class="container">
-    <h2 class="reveal">갤러리</h2>
+    <h2 class="reveal">{{ i18n "gallery" }}</h2>
     <div class="gallery-grid">
       {{ range $i, $g := . }}
       <figure class="gallery-item reveal d{{ add (mod $i 4) 1 }}">

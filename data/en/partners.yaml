@@ -1,0 +1,16 @@
+# Partner institutions (English) — items added/edited here appear automatically on the English partners page.
+- name: "Dept. of Laboratory Medicine, Gangnam Severance Hospital"
+  type: "Clinical collaboration"
+  scope: "Clinical specimen collection and diagnostic validation"
+
+- name: "Dept. of Laboratory Medicine, Chonnam National University Hospital"
+  type: "Joint research"
+  scope: "Coordinating center of the Kor-GLASS analysis network"
+
+- name: "Korea National Institute of Health, KDCA"
+  type: "Public partnership"
+  scope: "Antimicrobial resistance surveillance and data standardization"
+
+- name: "aiCAN"
+  type: "Research collaboration"
+  scope: "Next-generation sequencing analysis and AI algorithm development"
