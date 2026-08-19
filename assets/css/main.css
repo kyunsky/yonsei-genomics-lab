@@ -262,6 +262,15 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 .partner-name{font-weight:600;margin-bottom:3px;font-size:1.02rem}
 .partner-scope{font-size:.88rem;color:var(--muted);margin-top:8px;line-height:1.6}
 
+/* ─── 분석 도구 ─────────────────────────────────────────── */
+.tool-card{display:block;color:inherit}
+.tool-card:hover{color:inherit}
+.tool-link{
+  display:inline-block;margin-top:14px;font-size:.9rem;font-weight:600;
+  color:var(--accent);
+}
+.tool-card:hover .tool-link{color:var(--navy)}
+
 /* ─── 푸터 ──────────────────────────────────────────────── */
 .site-footer{
   background:var(--navy-deep);color:#9fb4cb;padding:52px 0;

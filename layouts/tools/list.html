@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="container">
+<article class="page">
+  <h1 class="reveal in">{{ .Title }}</h1>
+  {{ with .Content }}<div class="prose reveal in d1">{{ . }}</div>{{ end }}
+  <div class="partner-grid">
+    {{ range $i, $t := index .Site.Data .Site.Language.Lang "tools" }}
+    <a class="partner tool-card reveal d{{ add (mod $i 4) 1 }}"
+       href="{{ $t.url }}" target="_blank" rel="noopener">
+      <p class="partner-name">{{ $t.name }}</p>
+      <p class="muted">{{ $t.type }}</p>
+      <p class="partner-scope">{{ $t.scope }}</p>
+      <span class="tool-link">{{ $t.link_label }} ↗</span>
+    </a>
+    {{ end }}
+  </div>
+</article>
+</div>
+{{ end }}

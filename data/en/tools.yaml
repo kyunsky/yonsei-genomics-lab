@@ -1,0 +1,7 @@
+# Tools — add or edit entries here to update the TOOL page automatically.
+
+- name: "Korean Enterobacterales Atlas (KEA)"
+  type: "Genomic database"
+  scope: "An atlas of genomic and antimicrobial resistance data from clinical Enterobacterales isolates in Korea"
+  url: "https://kea.yonsei-microbial-genomics.org"
+  link_label: "Visit"

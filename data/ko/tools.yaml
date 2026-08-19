@@ -1,0 +1,7 @@
+# 분석 도구 — 항목을 추가/수정하면 TOOL 페이지에 자동 반영됩니다.
+
+- name: "Korean Enterobacterales Atlas (KEA)"
+  type: "유전체 데이터베이스"
+  scope: "국내 Enterobacterales 임상 분리주의 유전체·항생제 내성 정보를 제공하는 아틀라스"
+  url: "https://kea.yonsei-microbial-genomics.org"
+  link_label: "바로가기"
