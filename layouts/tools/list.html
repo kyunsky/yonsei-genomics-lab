@@ -3,7 +3,7 @@
 <article class="page">
   <h1 class="reveal in">{{ .Title }}</h1>
   {{ with .Content }}<div class="prose reveal in d1">{{ . }}</div>{{ end }}
-  <div class="partner-grid">
+  <div class="partner-grid tool-grid">
     {{ range $i, $t := index .Site.Data .Site.Language.Lang "tools" }}
     <a class="partner tool-card reveal d{{ add (mod $i 4) 1 }}"
        href="{{ $t.url }}" target="_blank" rel="noopener">
