@@ -5,3 +5,9 @@
   scope: "An atlas of genomic and antimicrobial resistance data from clinical Enterobacterales isolates in Korea"
   url: "https://kea.yonsei-microbial-genomics.org"
   link_label: "Visit"
+
+- name: "Bacterial Culture Agar Analyzer (AGAR)"
+  type: "Image analysis tool"
+  scope: "Automatic plate detection and colony counting from culture plate photos — TNTC calling, density heatmaps, and CSV export"
+  url: "https://agar.yonsei-microbial-genomics.org"
+  link_label: "Visit"

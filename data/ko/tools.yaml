@@ -5,3 +5,9 @@
   scope: "국내 Enterobacterales 임상 분리주의 유전체·항생제 내성 정보를 제공하는 아틀라스"
   url: "https://kea.yonsei-microbial-genomics.org"
   link_label: "바로가기"
+
+- name: "Bacterial Culture Agar Analyzer (AGAR)"
+  type: "이미지 분석 도구"
+  scope: "배양 접시 사진에서 접시를 자동 검출하고 콜로니를 계수 — TNTC 판정, 밀도 히트맵, CSV 내보내기 지원"
+  url: "https://agar.yonsei-microbial-genomics.org"
+  link_label: "바로가기"
