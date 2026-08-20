@@ -10,6 +10,5 @@
 - name: "Bacterial Culture Agar Analyzer (AGAR)"
   type: "Image analysis tool"
   scope: "Automatic colony counting from culture plate photos — TNTC calling, density heatmaps, CSV export"
-  note: "Requires @yuhs.ac email verification"
   url: "https://agar.yonsei-microbial-genomics.org"
   link_label: "Visit"

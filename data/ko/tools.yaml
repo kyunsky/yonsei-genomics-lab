@@ -10,6 +10,5 @@
 - name: "Bacterial Culture Agar Analyzer (AGAR)"
   type: "이미지 분석 도구"
   scope: "배양 접시 사진에서 콜로니 자동 계수 — TNTC 판정, 밀도 히트맵, CSV 내보내기"
-  note: "@yuhs.ac 메일 인증 필요"
   url: "https://agar.yonsei-microbial-genomics.org"
   link_label: "바로가기"
