@@ -266,7 +266,9 @@ h3{font-size:1.08rem;font-weight:600;margin-bottom:.4rem}
 .tool-grid{grid-template-columns:repeat(auto-fill,minmax(min(380px,100%),1fr));gap:24px}
 .tool-card{display:block;color:inherit;padding:30px}
 .tool-card .partner-name{font-size:1.2rem}
-.tool-card .partner-scope{font-size:1rem}
+.tool-card .partner-scope{font-size:1rem;word-break:keep-all}
+.tool-note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.tool-note::before{content:"🔒 "}
 .tool-card:hover{color:inherit}
 .tool-link{
   display:inline-block;margin-top:14px;font-size:.9rem;font-weight:600;

@@ -10,6 +10,7 @@
       <p class="partner-name">{{ $t.name }}</p>
       <p class="muted">{{ $t.type }}</p>
       <p class="partner-scope">{{ $t.scope }}</p>
+      {{ with $t.note }}<p class="tool-note">{{ . }}</p>{{ end }}
       <span class="tool-link">{{ $t.link_label }} ↗</span>
     </a>
     {{ end }}
