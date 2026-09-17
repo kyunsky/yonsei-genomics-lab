@@ -16,5 +16,6 @@
 - name: "Respiratory Plate Collector"
   type: "Image collection tool"
   scope: "Photograph Blood and MacConkey plates in one shot; plates are auto-detected and stored as per-plate crops — growth grading (no growth to 4+), index.csv export"
+  note: "Requires @yuhs.ac email verification"
   url: "https://plate.yonsei-microbial-genomics.org"
   link_label: "Visit"

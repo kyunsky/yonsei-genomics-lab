@@ -16,5 +16,6 @@
 - name: "Respiratory Plate Collector"
   type: "이미지 수집 도구"
   scope: "Blood·MacConkey 배지를 한 장으로 촬영하면 접시를 자동 검출해 접시별 crop 보관 — 성장 정도(무성장~4+) 기록, index.csv 내보내기"
+  note: "@yuhs.ac 메일 인증 필요"
   url: "https://plate.yonsei-microbial-genomics.org"
   link_label: "바로가기"
